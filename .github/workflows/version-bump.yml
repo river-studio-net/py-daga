@@ -38,11 +38,11 @@ jobs:
         uv version bump minor
         
         # Get the new version
-        VERSION=$(uv version)
+        VERSION=$(uv version --short)
         echo "New version: $VERSION"
     
     - name: Commit and push version bump
       run: |
         git add pyproject.toml
-        git commit -m "chore: bump version to $(uv version) [skip ci]"
+        git commit -m "chore: bump version to $(uv version --short) [skip ci]"
         git push origin main

@@ -105,6 +105,6 @@ jobs:
     - name: Create Release
       if: github.ref == 'refs/heads/main'
       run: |
-        VERSION=$(uv version)
+        VERSION=$(uv version --short)
         git tag -a "v$VERSION" -m "Release v$VERSION"
         git push origin "v$VERSION"
