@@ -63,6 +63,39 @@ flow = DagaFlow(
 results = flow.run()
 ```
 
+## Contributing
+
+### Documentation
+
+The project includes comprehensive auto-generated documentation that is updated automatically on every push to the main branch.
+
+#### Auto-Generation
+
+The documentation in the `docs/` folder is automatically generated using [pdoc](https://pdoc.dev/) whenever changes are pushed to the main branch. The GitHub Action workflow (`.github/workflows/docs.yml`) handles this process.
+
+#### Viewing Documentation
+
+Open `docs/index.html` in your web browser to view the generated documentation.
+
+#### Documentation Structure
+
+- `index.html` - Main documentation page with module overview
+- `action.html` - Documentation for the DagaAction classes
+- `flow.html` - Documentation for the DagaFlow orchestrator
+- `meta.html` - Documentation for the DagaMeta metaclass
+- `utils.html` - Documentation for utility functions and classes
+
+### Development
+
+To contribute to the project:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass: `uv run pytest`
+6. Submit a pull request
+
 ## Rejected Ideas
 ### Implmenting DagaAction as a context manager
 Trying to use said context manager proved to be confusing beyond any standard, and so it has been decided to drop the implementation.
