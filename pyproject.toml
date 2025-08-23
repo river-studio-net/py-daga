@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Py-Daga: Saga DAGs Made Easy"
 readme = "README.md"
 license = { file = "LICENSE" }
-url = "https://github.com/river-studio-net/py-daga"
 authors = [
     { name = "River Studio", email = "git@river-studio.net" }
 ]
