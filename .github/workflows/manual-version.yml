@@ -1,0 +1,61 @@
+name: Manual Version Bump
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version bump type'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+        - patch
+        - minor
+        - major
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Full history for version bumping
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v2
+      with:
+        version: "latest"
+    
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+    
+    - name: Bump version
+      run: |
+        # Bump version based on input
+        uv version bump ${{ github.event.inputs.version_type }}
+        
+        # Get the new version
+        VERSION=$(uv version)
+        echo "New version: $VERSION"
+    
+    - name: Commit and push version bump
+      run: |
+        git add pyproject.toml
+        git commit -m "chore: bump version to $(uv version) [skip ci]"
+        git push origin main
+    
+    - name: Create Release Tag
+      run: |
+        VERSION=$(uv version)
+        git tag -a "v$VERSION" -m "Release v$VERSION"
+        git push origin "v$VERSION"
