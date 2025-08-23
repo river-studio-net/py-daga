@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>src API documentation</title>
+<meta name="description" content="Py-Daga: A Python library for Directed Acyclic Graph (DAG) based workflow orchestration …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>src</code></h1>
+</header>
+<section id="section-intro">
+<p>Py-Daga: A Python library for Directed Acyclic Graph (DAG) based workflow orchestration.</p>
+<p>This package provides a framework for creating and executing workflows defined as directed acyclic graphs,
+with support for rollback mechanisms and error handling.</p>
+<h2 id="components">Components</h2>
+<ul>
+<li>DagaAction: Base class for defining workflow actions</li>
+<li>DagaFlow: Orchestrator for executing DAG-based workflows</li>
+</ul>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="src.action" href="action.html">src.action</a></code></dt>
+<dd>
+<div class="desc"><p>DagaAction module providing the core action classes for workflow orchestration …</p></div>
+</dd>
+<dt><code class="name"><a title="src.flow" href="flow.html">src.flow</a></code></dt>
+<dd>
+<div class="desc"><p>DagaFlow module for orchestrating DAG-based workflow execution …</p></div>
+</dd>
+<dt><code class="name"><a title="src.meta" href="meta.html">src.meta</a></code></dt>
+<dd>
+<div class="desc"><p>DagaMeta metaclass for managing DagaAction registration and validation …</p></div>
+</dd>
+<dt><code class="name"><a title="src.utils" href="utils.html">src.utils</a></code></dt>
+<dd>
+<div class="desc"><p>Utility functions and classes for DAG flow orchestration …</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.DagaAction"><code class="flex name class">
+<span>class <span class="ident">DagaAction</span></span>
+<span>(</span><span>wrapped: Coroutine[I, Any, O] | None = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DagaAction[I, O](metaclass=DagaMeta):
+    &#34;&#34;&#34;
+    Base class for defining workflow actions in a DAG-based workflow system.
+    
+    DagaAction represents a single unit of work in a workflow. Each action can
+    receive results from predecessor actions and produce output that can be
+    consumed by successor actions. Actions can also have rollback functionality
+    for error recovery.
+    
+    Generic Parameters:
+        I: Input type for the action (when used as a decorator)
+        O: Output type of the action
+    
+    Attributes:
+        _wrapped_action_instance: The rollback action instance if registered
+        log: Logger instance for this action
+        is_decorator_action: Whether this action was created via decorator
+        wrapped_func: The actual function to be executed
+    &#34;&#34;&#34;
+    _wrapped_action_instance: &#34;DagaAction[I, O]&#34; = None
+    log: Logger = getLogger(__name__)
+    
+    @final
+    def __init__(self, wrapped: Coroutine[I, Any, O] | None = None) -&gt; None:
+        &#34;&#34;&#34;
+        Initialize a DagaAction instance.
+        
+        Args:
+            wrapped: Optional coroutine function to wrap. If provided, this action
+                    is created as a decorator action with the wrapped function.
+        &#34;&#34;&#34;
+        self.is_decorator_action = False
+        self.wrapped_func = self.__call__
+        # wrapped is available means that the action is created by decorating a callable
+        if wrapped:
+            self.wrapped_func = wrapped
+            self.__name__ = wrapped.__name__
+            self.is_decorator_action = True
+    
+    def __call__(self, predecessors_results: list[Any] = None) -&gt; Any:
+        &#34;&#34;&#34;
+        Execute the action with results from predecessor actions.
+        
+        Args:
+            predecessors_results: List of results from predecessor actions in the DAG.
+                                Can be None if this is a root action.
+        
+        Returns:
+            The result of executing this action.
+        &#34;&#34;&#34;
+        return self.wrapped_func(predecessors_results)
+
+    @final
+    async def rollback(self, predecessors_results: list[Any]) -&gt; O:
+        &#34;&#34;&#34;
+        Execute the rollback action for this action.
+        
+        Rollback actions are used to undo the effects of a failed action or
+        to clean up resources when a workflow fails.
+        
+        Args:
+            predecessors_results: List of results from predecessor actions.
+        
+        Returns:
+            The result of the rollback operation, or True if no rollback is defined.
+        &#34;&#34;&#34;
+        if self._wrapped_action_instance:
+            self.log.info(f&#34;Rolling back {self} with {self._wrapped_action_instance}&#34;)
+            return await self._wrapped_action_instance(predecessors_results) or True
+        self.log.warning(f&#34;No rollback action for {self}&#34;)
+    
+    @final
+    @classmethod
+    def register_class_as_rollback(cls, wrapped_rollback_class: type[&#34;DagaAction[I, O]&#34;]) -&gt; &#34;DagaAction[I, O]&#34;:
+        &#34;&#34;&#34;
+        Register a class as the rollback action for this action.
+        
+        Args:
+            wrapped_rollback_class: The class to use as the rollback action.
+                                   Must be a subclass of DagaAction.
+        
+        Returns:
+            The registered rollback action instance.
+        &#34;&#34;&#34;
+        cls._wrapped_action_instance = wrapped_rollback_class()
+        return cls._wrapped_action_instance
+
+    @final
+    def register_function_as_rollback(self, wrapped_rollback_func: Callable[[Any], Coroutine[O, Any, Any]]) -&gt; &#34;DagaAction[I, O]&#34;:
+        &#34;&#34;&#34;
+        Register a function as the rollback action for this action.
+        
+        Args:
+            wrapped_rollback_func: The function to use as the rollback action.
+                                  Must be a coroutine function.
+        
+        Returns:
+            The registered rollback action instance.
+        &#34;&#34;&#34;
+        self._wrapped_action_instance = wrapped_rollback_func
+        return self._wrapped_action_instance
+
+    @final
+    def __repr__(self):
+        &#34;&#34;&#34;Return a string representation of this action.&#34;&#34;&#34;
+        return f&#34;DagaAction({self.__class__.__name__})&#34; if not self.is_decorator_action else f&#34;DagaAction({self.__name__})&#34;
+    
+    @final
+    def __str__(self):
+        &#34;&#34;&#34;Return a string representation of this action.&#34;&#34;&#34;
+        return self.__repr__()
+    
+    @final
+    def __hash__(self) -&gt; int:
+        &#34;&#34;&#34;Return a hash value for this action.&#34;&#34;&#34;
+        return hash(self.__repr__())</code></pre>
+</details>
+<div class="desc"><p>Base class for defining workflow actions in a DAG-based workflow system.</p>
+<p>DagaAction represents a single unit of work in a workflow. Each action can
+receive results from predecessor actions and produce output that can be
+consumed by successor actions. Actions can also have rollback functionality
+for error recovery.</p>
+<p>Generic Parameters:
+I: Input type for the action (when used as a decorator)
+O: Output type of the action</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>_wrapped_action_instance</code></strong></dt>
+<dd>The rollback action instance if registered</dd>
+<dt><strong><code>log</code></strong></dt>
+<dd>Logger instance for this action</dd>
+<dt><strong><code>is_decorator_action</code></strong></dt>
+<dd>Whether this action was created via decorator</dd>
+<dt><strong><code>wrapped_func</code></strong></dt>
+<dd>The actual function to be executed</dd>
+</dl>
+<p>Initialize a DagaAction instance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>wrapped</code></strong></dt>
+<dd>Optional coroutine function to wrap. If provided, this action
+is created as a decorator action with the wrapped function.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Generic</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="src.action.EmptyAction" href="action.html#src.action.EmptyAction">EmptyAction</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="src.DagaAction.log"><code class="name">var <span class="ident">log</span> : logging.Logger</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="src.DagaAction.register_class_as_rollback"><code class="name flex">
+<span>def <span class="ident">register_class_as_rollback</span></span>(<span>wrapped_rollback_class: type['<a title="src.DagaAction" href="#src.DagaAction">DagaAction</a>[I, O]'])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Register a class as the rollback action for this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>wrapped_rollback_class</code></strong></dt>
+<dd>The class to use as the rollback action.
+Must be a subclass of DagaAction.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The registered rollback action instance.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="src.DagaAction.register_function_as_rollback"><code class="name flex">
+<span>def <span class="ident">register_function_as_rollback</span></span>(<span>self, wrapped_rollback_func: Callable[[Any], Coroutine[O, Any, Any]]) ‑> <a title="src.DagaAction" href="#src.DagaAction">DagaAction</a>[I, O]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@final
+def register_function_as_rollback(self, wrapped_rollback_func: Callable[[Any], Coroutine[O, Any, Any]]) -&gt; &#34;DagaAction[I, O]&#34;:
+    &#34;&#34;&#34;
+    Register a function as the rollback action for this action.
+    
+    Args:
+        wrapped_rollback_func: The function to use as the rollback action.
+                              Must be a coroutine function.
+    
+    Returns:
+        The registered rollback action instance.
+    &#34;&#34;&#34;
+    self._wrapped_action_instance = wrapped_rollback_func
+    return self._wrapped_action_instance</code></pre>
+</details>
+<div class="desc"><p>Register a function as the rollback action for this action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>wrapped_rollback_func</code></strong></dt>
+<dd>The function to use as the rollback action.
+Must be a coroutine function.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The registered rollback action instance.</p></div>
+</dd>
+<dt id="src.DagaAction.rollback"><code class="name flex">
+<span>async def <span class="ident">rollback</span></span>(<span>self, predecessors_results: list[typing.Any]) ‑> O</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@final
+async def rollback(self, predecessors_results: list[Any]) -&gt; O:
+    &#34;&#34;&#34;
+    Execute the rollback action for this action.
+    
+    Rollback actions are used to undo the effects of a failed action or
+    to clean up resources when a workflow fails.
+    
+    Args:
+        predecessors_results: List of results from predecessor actions.
+    
+    Returns:
+        The result of the rollback operation, or True if no rollback is defined.
+    &#34;&#34;&#34;
+    if self._wrapped_action_instance:
+        self.log.info(f&#34;Rolling back {self} with {self._wrapped_action_instance}&#34;)
+        return await self._wrapped_action_instance(predecessors_results) or True
+    self.log.warning(f&#34;No rollback action for {self}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Execute the rollback action for this action.</p>
+<p>Rollback actions are used to undo the effects of a failed action or
+to clean up resources when a workflow fails.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>predecessors_results</code></strong></dt>
+<dd>List of results from predecessor actions.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The result of the rollback operation, or True if no rollback is defined.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.DagaFlow"><code class="flex name class">
+<span>class <span class="ident">DagaFlow</span></span>
+<span>(</span><span>dag: networkx.classes.digraph.DiGraph)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DagaFlow[I, O]:
+    &#34;&#34;&#34;
+    Orchestrator for executing DAG-based workflows with rollback support.
+    
+    DagaFlow takes a directed acyclic graph (DAG) of actions and executes them
+    in the correct order, handling failures and performing rollbacks when necessary.
+    Actions within the same batch are executed in parallel for efficiency.
+    
+    Generic Parameters:
+        I: Input type for the workflow
+        O: Output type of the workflow
+    
+    Attributes:
+        dag: The NetworkX DiGraph representing the workflow
+        action_matrix: List of batches containing ActionDescriptor objects
+    &#34;&#34;&#34;
+    
+    def __init__(self, dag: nx.DiGraph):
+        &#34;&#34;&#34;
+        Initialize a DagaFlow instance with a DAG.
+        
+        Args:
+            dag: A NetworkX DiGraph where nodes are DagaAction instances and
+                 edges represent dependencies between actions
+        
+        Raises:
+            AssertionError: If the provided graph is not a directed acyclic graph
+        &#34;&#34;&#34;
+        self.dag = dag
+        assert nx.is_directed_acyclic_graph(self.dag), &#34;DAG must be a directed acyclic graph&#34;
+        DagaFlowUtils.initialize_dag_as_flow(self.dag)
+        self.action_matrix = DagaFlowUtils.get_flow_batches(self.dag)
+
+    def __repr__(self):
+        &#34;&#34;&#34;Return a string representation of this DagaFlow instance.&#34;&#34;&#34;
+        return f&#34;DagaFlow({self.dag})&#34;
+
+    def __str__(self):
+        &#34;&#34;&#34;Return a string representation of this DagaFlow instance.&#34;&#34;&#34;
+        return self.__repr__()
+    
+    async def run(self, input: I) -&gt; list[O]:
+        &#34;&#34;&#34;
+        Execute the workflow with the given input.
+        
+        This method executes all actions in the workflow in the correct order,
+        with parallel execution within batches. If any action fails, the workflow
+        performs rollback operations for all affected actions.
+        
+        Args:
+            input: The initial input value for the workflow
+        
+        Returns:
+            List of results from the final batch of actions
+        
+        Raises:
+            ExceptionGroup: If any action fails, containing all the errors
+                           that occurred during execution
+        &#34;&#34;&#34;
+        self.action_matrix[0][0].result = input
+        for batch_index, batch in enumerate(self.action_matrix[1:], start=1):
+            tasks = [DagaFlowUtils.wrap_action(action, self.action_matrix) for action in batch]
+            await asyncio.gather(*tasks, return_exceptions=True)
+            failed_actions = list(filter(lambda x: x.error, batch))
+            if failed_actions:
+                for failed_action in failed_actions:
+                    await DagaFlowUtils.rollback_action(failed_action, self.action_matrix)
+                for batch in self.action_matrix[batch_index:]:
+                    rollback_tasks = [DagaFlowUtils.rollback_action(action, self.action_matrix) for action in batch]
+                    await asyncio.gather(*rollback_tasks)
+                raise ExceptionGroup(&#34;DagaFlowError&#34;, [failed_action.error for failed_action in failed_actions])
+        return [action.result for action in self.action_matrix[-1]]</code></pre>
+</details>
+<div class="desc"><p>Orchestrator for executing DAG-based workflows with rollback support.</p>
+<p>DagaFlow takes a directed acyclic graph (DAG) of actions and executes them
+in the correct order, handling failures and performing rollbacks when necessary.
+Actions within the same batch are executed in parallel for efficiency.</p>
+<p>Generic Parameters:
+I: Input type for the workflow
+O: Output type of the workflow</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>dag</code></strong></dt>
+<dd>The NetworkX DiGraph representing the workflow</dd>
+<dt><strong><code>action_matrix</code></strong></dt>
+<dd>List of batches containing ActionDescriptor objects</dd>
+</dl>
+<p>Initialize a DagaFlow instance with a DAG.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dag</code></strong></dt>
+<dd>A NetworkX DiGraph where nodes are DagaAction instances and
+edges represent dependencies between actions</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AssertionError</code></dt>
+<dd>If the provided graph is not a directed acyclic graph</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Generic</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.DagaFlow.run"><code class="name flex">
+<span>async def <span class="ident">run</span></span>(<span>self, input: I) ‑> list[O]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def run(self, input: I) -&gt; list[O]:
+    &#34;&#34;&#34;
+    Execute the workflow with the given input.
+    
+    This method executes all actions in the workflow in the correct order,
+    with parallel execution within batches. If any action fails, the workflow
+    performs rollback operations for all affected actions.
+    
+    Args:
+        input: The initial input value for the workflow
+    
+    Returns:
+        List of results from the final batch of actions
+    
+    Raises:
+        ExceptionGroup: If any action fails, containing all the errors
+                       that occurred during execution
+    &#34;&#34;&#34;
+    self.action_matrix[0][0].result = input
+    for batch_index, batch in enumerate(self.action_matrix[1:], start=1):
+        tasks = [DagaFlowUtils.wrap_action(action, self.action_matrix) for action in batch]
+        await asyncio.gather(*tasks, return_exceptions=True)
+        failed_actions = list(filter(lambda x: x.error, batch))
+        if failed_actions:
+            for failed_action in failed_actions:
+                await DagaFlowUtils.rollback_action(failed_action, self.action_matrix)
+            for batch in self.action_matrix[batch_index:]:
+                rollback_tasks = [DagaFlowUtils.rollback_action(action, self.action_matrix) for action in batch]
+                await asyncio.gather(*rollback_tasks)
+            raise ExceptionGroup(&#34;DagaFlowError&#34;, [failed_action.error for failed_action in failed_actions])
+    return [action.result for action in self.action_matrix[-1]]</code></pre>
+</details>
+<div class="desc"><p>Execute the workflow with the given input.</p>
+<p>This method executes all actions in the workflow in the correct order,
+with parallel execution within batches. If any action fails, the workflow
+performs rollback operations for all affected actions.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>input</code></strong></dt>
+<dd>The initial input value for the workflow</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of results from the final batch of actions</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ExceptionGroup</code></dt>
+<dd>If any action fails, containing all the errors
+that occurred during execution</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="src.action" href="action.html">src.action</a></code></li>
+<li><code><a title="src.flow" href="flow.html">src.flow</a></code></li>
+<li><code><a title="src.meta" href="meta.html">src.meta</a></code></li>
+<li><code><a title="src.utils" href="utils.html">src.utils</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.DagaAction" href="#src.DagaAction">DagaAction</a></code></h4>
+<ul class="">
+<li><code><a title="src.DagaAction.log" href="#src.DagaAction.log">log</a></code></li>
+<li><code><a title="src.DagaAction.register_class_as_rollback" href="#src.DagaAction.register_class_as_rollback">register_class_as_rollback</a></code></li>
+<li><code><a title="src.DagaAction.register_function_as_rollback" href="#src.DagaAction.register_function_as_rollback">register_function_as_rollback</a></code></li>
+<li><code><a title="src.DagaAction.rollback" href="#src.DagaAction.rollback">rollback</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.DagaFlow" href="#src.DagaFlow">DagaFlow</a></code></h4>
+<ul class="">
+<li><code><a title="src.DagaFlow.run" href="#src.DagaFlow.run">run</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

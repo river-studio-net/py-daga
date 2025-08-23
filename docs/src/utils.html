@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>src.utils API documentation</title>
+<meta name="description" content="Utility functions and classes for DAG flow orchestration …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Utility functions and classes for DAG flow orchestration.</p>
+<p>This module provides utility functions and data structures for managing
+DAG-based workflows, including action descriptors, batches, and flow utilities.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.utils.indexx"><code class="name flex">
+<span>def <span class="ident">indexx</span></span>(<span>iterable: Iterable[Iterable[T]],<br>item: I,<br>key: Callable[[T], I] = &lt;function &lt;lambda&gt;&gt;) ‑> tuple[int, int]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def indexx[T, I](iterable: Iterable[Iterable[T]], item: I, key: Callable[[T], I] = lambda x: x) -&gt; tuple[int, int]:
+    &#34;&#34;&#34;
+    Find the position of an item in a nested iterable.
+    
+    Args:
+        iterable: A nested iterable (e.g., list of lists)
+        item: The item to search for
+        key: Function to extract the key from each item for comparison
+    
+    Returns:
+        Tuple of (outer_index, inner_index) where the item was found
+    
+    Raises:
+        KeyError: If the item is not found in the iterable
+    &#34;&#34;&#34;
+    for i, sub_iterable in enumerate(iterable):
+        for j, v in enumerate(sub_iterable):
+            if key(v) == item:
+                return i, j
+    raise KeyError(f&#34;Item {item} not found in iterable&#34;)</code></pre>
+</details>
+<div class="desc"><p>Find the position of an item in a nested iterable.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>iterable</code></strong></dt>
+<dd>A nested iterable (e.g., list of lists)</dd>
+<dt><strong><code>item</code></strong></dt>
+<dd>The item to search for</dd>
+<dt><strong><code>key</code></strong></dt>
+<dd>Function to extract the key from each item for comparison</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>Tuple of (outer_index, inner_index) where the item was found</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>KeyError</code></dt>
+<dd>If the item is not found in the iterable</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.utils.ActionDescriptor"><code class="flex name class">
+<span>class <span class="ident">ActionDescriptor</span></span>
+<span>(</span><span>action: <a title="src.action.DagaAction" href="action.html#src.action.DagaAction">DagaAction</a>[I, O],<br>batch_index: int,<br>node_index: int,<br>predecessors: list[tuple[int, int]],<br>result: O | None = None,<br>time_started: float | None = None,<br>time_ended: float | None = None,<br>error: Exception | None = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class ActionDescriptor[I, O]:
+    &#34;&#34;&#34;
+    Descriptor for an action in a workflow batch.
+    
+    This class holds metadata about an action including its position in the
+    workflow, timing information, and execution results.
+    
+    Generic Parameters:
+        I: Input type for the action
+        O: Output type of the action
+    
+    Attributes:
+        action: The DagaAction instance
+        batch_index: Index of the batch this action belongs to
+        node_index: Index of the node within the batch
+        predecessors: List of (batch_index, node_index) tuples for predecessor actions
+        result: The result of executing this action (None if not yet executed)
+        time_started: Timestamp when execution started (None if not yet started)
+        time_ended: Timestamp when execution ended (None if not yet ended)
+        error: Exception that occurred during execution (None if successful)
+    &#34;&#34;&#34;
+    action: DagaAction[I, O]
+    batch_index: BatchID
+    node_index: NodeID
+    predecessors: list[tuple[BatchID, NodeID]]
+    result: O | None = None
+    time_started: float | None = None
+    time_ended: float | None = None
+    error: Exception | None = None</code></pre>
+</details>
+<div class="desc"><p>Descriptor for an action in a workflow batch.</p>
+<p>This class holds metadata about an action including its position in the
+workflow, timing information, and execution results.</p>
+<p>Generic Parameters:
+I: Input type for the action
+O: Output type of the action</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>action</code></strong></dt>
+<dd>The DagaAction instance</dd>
+<dt><strong><code>batch_index</code></strong></dt>
+<dd>Index of the batch this action belongs to</dd>
+<dt><strong><code>node_index</code></strong></dt>
+<dd>Index of the node within the batch</dd>
+<dt><strong><code>predecessors</code></strong></dt>
+<dd>List of (batch_index, node_index) tuples for predecessor actions</dd>
+<dt><strong><code>result</code></strong></dt>
+<dd>The result of executing this action (None if not yet executed)</dd>
+<dt><strong><code>time_started</code></strong></dt>
+<dd>Timestamp when execution started (None if not yet started)</dd>
+<dt><strong><code>time_ended</code></strong></dt>
+<dd>Timestamp when execution ended (None if not yet ended)</dd>
+<dt><strong><code>error</code></strong></dt>
+<dd>Exception that occurred during execution (None if successful)</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>typing.Generic</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="src.utils.ActionDescriptor.action"><code class="name">var <span class="ident">action</span> : <a title="src.action.DagaAction" href="action.html#src.action.DagaAction">DagaAction</a>[I, O]</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="src.utils.ActionDescriptor.batch_index"><code class="name">var <span class="ident">batch_index</span> : int</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="src.utils.ActionDescriptor.error"><code class="name">var <span class="ident">error</span> : Exception | None</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="src.utils.ActionDescriptor.node_index"><code class="name">var <span class="ident">node_index</span> : int</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="src.utils.ActionDescriptor.predecessors"><code class="name">var <span class="ident">predecessors</span> : list[tuple[int, int]]</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="src.utils.ActionDescriptor.result"><code class="name">var <span class="ident">result</span> : O | None</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="src.utils.ActionDescriptor.time_ended"><code class="name">var <span class="ident">time_ended</span> : float | None</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="src.utils.ActionDescriptor.time_started"><code class="name">var <span class="ident">time_started</span> : float | None</code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.utils.Batch"><code class="flex name class">
+<span>class <span class="ident">Batch</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Batch[I, O](list[ActionDescriptor[I, O]]):
+    &#34;&#34;&#34;
+    A batch of actions that can be executed in parallel.
+    
+    This class represents a collection of actions that have no dependencies
+    on each other and can therefore be executed concurrently.
+    
+    Generic Parameters:
+        I: Input type for the actions in this batch
+        O: Output type of the actions in this batch
+    &#34;&#34;&#34;
+    
+    def results(self) -&gt; list[O]:
+        &#34;&#34;&#34;
+        Get the results of all actions in this batch.
+        
+        Returns:
+            List of results from all actions in the batch
+        &#34;&#34;&#34;
+        return [action.result for action in self]</code></pre>
+</details>
+<div class="desc"><p>A batch of actions that can be executed in parallel.</p>
+<p>This class represents a collection of actions that have no dependencies
+on each other and can therefore be executed concurrently.</p>
+<p>Generic Parameters:
+I: Input type for the actions in this batch
+O: Output type of the actions in this batch</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.list</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.utils.Batch.results"><code class="name flex">
+<span>def <span class="ident">results</span></span>(<span>self) ‑> list[O]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def results(self) -&gt; list[O]:
+    &#34;&#34;&#34;
+    Get the results of all actions in this batch.
+    
+    Returns:
+        List of results from all actions in the batch
+    &#34;&#34;&#34;
+    return [action.result for action in self]</code></pre>
+</details>
+<div class="desc"><p>Get the results of all actions in this batch.</p>
+<h2 id="returns">Returns</h2>
+<p>List of results from all actions in the batch</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="src.utils.DagaFlowUtils"><code class="flex name class">
+<span>class <span class="ident">DagaFlowUtils</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DagaFlowUtils:
+    &#34;&#34;&#34;
+    Utility class for managing DAG-based workflow execution.
+    
+    This class provides static methods for converting DAGs into executable
+    batches, managing action execution, and handling rollback operations.
+    &#34;&#34;&#34;
+    
+    @staticmethod
+    def get_predecessors_results(action: ActionDescriptor[Any, Any], batches: list[Batch[Any, Any]]) -&gt; list[Any]:
+        &#34;&#34;&#34;
+        Get the results of all predecessor actions for a given action.
+        
+        Args:
+            action: The action descriptor to get predecessors for
+            batches: List of all batches in the workflow
+        
+        Returns:
+            List of results from predecessor actions
+        &#34;&#34;&#34;
+        return [
+            batches[batch_index][node_index].result 
+            for batch_index, node_index 
+            in action.predecessors
+        ]
+    
+    @staticmethod
+    def initialize_dag_as_flow(dag: nx.DiGraph, root: DagaAction[Any, Any] = EmptyAction()):
+        &#34;&#34;&#34;
+        Initialize a DAG by adding a root action to nodes with no incoming edges.
+        
+        This method ensures that all nodes in the DAG have at least one
+        predecessor by connecting nodes with no incoming edges to a root action.
+        
+        Args:
+            dag: The NetworkX DiGraph representing the workflow
+            root: The root action to use (defaults to EmptyAction)
+        &#34;&#34;&#34;
+        dag.add_edges_from([(root, node) for node in dag if not dag.in_degree(node)])
+
+    @staticmethod
+    def get_flow_batches(dag: nx.DiGraph) -&gt; list[Batch[Any, Any]]:
+        &#34;&#34;&#34;
+        Convert a DAG into a list of executable batches.
+        
+        This method performs topological sorting to determine the execution
+        order and creates ActionDescriptor objects for each action.
+        
+        Args:
+            dag: The NetworkX DiGraph representing the workflow
+        
+        Returns:
+            List of batches, where each batch contains actions that can be
+            executed in parallel
+        &#34;&#34;&#34;
+        batches: list[Batch[Any, Any]] = list(nx.topological_generations(dag))
+        # replace the actions in the batches with ActionDescriptors
+        for batch_index, batch in enumerate(batches):
+            for node_index, action in enumerate(batch):
+                predecessors = [indexx(batches, predecessor, key=lambda x: x.action) for predecessor in dag.predecessors(action)]
+                batches[batch_index][node_index] = ActionDescriptor(action, batch_index, node_index, predecessors)
+        return batches
+
+    @staticmethod
+    async def wrap_action(action: ActionDescriptor[Any, Any], batches: list[Batch[Any, Any]]) -&gt; ActionDescriptor[Any, Any]:
+        &#34;&#34;&#34;
+        Execute an action with proper timing and error handling.
+        
+        This method executes an action, records timing information, and
+        handles any exceptions that occur during execution.
+        
+        Args:
+            action: The action descriptor to execute
+            batches: List of all batches in the workflow
+        
+        Returns:
+            The action descriptor with updated result and timing information
+        
+        Raises:
+            Exception: Any exception that occurs during action execution
+        &#34;&#34;&#34;
+        action.time_started = time.time()
+        try:
+            predecessors_results = DagaFlowUtils.get_predecessors_results(action, batches)
+            action.result = await action.action(predecessors_results)
+            return action.result
+        except Exception as e:
+            action.error = e
+            raise e
+        finally:
+            action.time_ended = time.time()
+
+    @staticmethod
+    async def rollback_action(action: ActionDescriptor[Any, Any], batches: list[Batch[Any, Any]]) -&gt; Any:
+        &#34;&#34;&#34;
+        Execute the rollback for a given action.
+        
+        This method executes the rollback action associated with the given
+        action descriptor.
+        
+        Args:
+            action: The action descriptor to rollback
+            batches: List of all batches in the workflow
+        
+        Returns:
+            The result of the rollback operation
+        &#34;&#34;&#34;
+        return await action.action.rollback(DagaFlowUtils.get_predecessors_results(action, batches))</code></pre>
+</details>
+<div class="desc"><p>Utility class for managing DAG-based workflow execution.</p>
+<p>This class provides static methods for converting DAGs into executable
+batches, managing action execution, and handling rollback operations.</p></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="src.utils.DagaFlowUtils.get_flow_batches"><code class="name flex">
+<span>def <span class="ident">get_flow_batches</span></span>(<span>dag: networkx.classes.digraph.DiGraph) ‑> list[<a title="src.utils.Batch" href="#src.utils.Batch">Batch</a>[typing.Any, typing.Any]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_flow_batches(dag: nx.DiGraph) -&gt; list[Batch[Any, Any]]:
+    &#34;&#34;&#34;
+    Convert a DAG into a list of executable batches.
+    
+    This method performs topological sorting to determine the execution
+    order and creates ActionDescriptor objects for each action.
+    
+    Args:
+        dag: The NetworkX DiGraph representing the workflow
+    
+    Returns:
+        List of batches, where each batch contains actions that can be
+        executed in parallel
+    &#34;&#34;&#34;
+    batches: list[Batch[Any, Any]] = list(nx.topological_generations(dag))
+    # replace the actions in the batches with ActionDescriptors
+    for batch_index, batch in enumerate(batches):
+        for node_index, action in enumerate(batch):
+            predecessors = [indexx(batches, predecessor, key=lambda x: x.action) for predecessor in dag.predecessors(action)]
+            batches[batch_index][node_index] = ActionDescriptor(action, batch_index, node_index, predecessors)
+    return batches</code></pre>
+</details>
+<div class="desc"><p>Convert a DAG into a list of executable batches.</p>
+<p>This method performs topological sorting to determine the execution
+order and creates ActionDescriptor objects for each action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dag</code></strong></dt>
+<dd>The NetworkX DiGraph representing the workflow</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of batches, where each batch contains actions that can be
+executed in parallel</p></div>
+</dd>
+<dt id="src.utils.DagaFlowUtils.get_predecessors_results"><code class="name flex">
+<span>def <span class="ident">get_predecessors_results</span></span>(<span>action: <a title="src.utils.ActionDescriptor" href="#src.utils.ActionDescriptor">ActionDescriptor</a>[typing.Any, typing.Any],<br>batches: list[<a title="src.utils.Batch" href="#src.utils.Batch">Batch</a>[typing.Any, typing.Any]]) ‑> list[typing.Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_predecessors_results(action: ActionDescriptor[Any, Any], batches: list[Batch[Any, Any]]) -&gt; list[Any]:
+    &#34;&#34;&#34;
+    Get the results of all predecessor actions for a given action.
+    
+    Args:
+        action: The action descriptor to get predecessors for
+        batches: List of all batches in the workflow
+    
+    Returns:
+        List of results from predecessor actions
+    &#34;&#34;&#34;
+    return [
+        batches[batch_index][node_index].result 
+        for batch_index, node_index 
+        in action.predecessors
+    ]</code></pre>
+</details>
+<div class="desc"><p>Get the results of all predecessor actions for a given action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>action</code></strong></dt>
+<dd>The action descriptor to get predecessors for</dd>
+<dt><strong><code>batches</code></strong></dt>
+<dd>List of all batches in the workflow</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>List of results from predecessor actions</p></div>
+</dd>
+<dt id="src.utils.DagaFlowUtils.initialize_dag_as_flow"><code class="name flex">
+<span>def <span class="ident">initialize_dag_as_flow</span></span>(<span>dag: networkx.classes.digraph.DiGraph,<br>root: <a title="src.action.DagaAction" href="action.html#src.action.DagaAction">DagaAction</a>[typing.Any, typing.Any] = DagaAction(EmptyAction))</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def initialize_dag_as_flow(dag: nx.DiGraph, root: DagaAction[Any, Any] = EmptyAction()):
+    &#34;&#34;&#34;
+    Initialize a DAG by adding a root action to nodes with no incoming edges.
+    
+    This method ensures that all nodes in the DAG have at least one
+    predecessor by connecting nodes with no incoming edges to a root action.
+    
+    Args:
+        dag: The NetworkX DiGraph representing the workflow
+        root: The root action to use (defaults to EmptyAction)
+    &#34;&#34;&#34;
+    dag.add_edges_from([(root, node) for node in dag if not dag.in_degree(node)])</code></pre>
+</details>
+<div class="desc"><p>Initialize a DAG by adding a root action to nodes with no incoming edges.</p>
+<p>This method ensures that all nodes in the DAG have at least one
+predecessor by connecting nodes with no incoming edges to a root action.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dag</code></strong></dt>
+<dd>The NetworkX DiGraph representing the workflow</dd>
+<dt><strong><code>root</code></strong></dt>
+<dd>The root action to use (defaults to EmptyAction)</dd>
+</dl></div>
+</dd>
+<dt id="src.utils.DagaFlowUtils.rollback_action"><code class="name flex">
+<span>async def <span class="ident">rollback_action</span></span>(<span>action: <a title="src.utils.ActionDescriptor" href="#src.utils.ActionDescriptor">ActionDescriptor</a>[typing.Any, typing.Any],<br>batches: list[<a title="src.utils.Batch" href="#src.utils.Batch">Batch</a>[typing.Any, typing.Any]]) ‑> Any</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+async def rollback_action(action: ActionDescriptor[Any, Any], batches: list[Batch[Any, Any]]) -&gt; Any:
+    &#34;&#34;&#34;
+    Execute the rollback for a given action.
+    
+    This method executes the rollback action associated with the given
+    action descriptor.
+    
+    Args:
+        action: The action descriptor to rollback
+        batches: List of all batches in the workflow
+    
+    Returns:
+        The result of the rollback operation
+    &#34;&#34;&#34;
+    return await action.action.rollback(DagaFlowUtils.get_predecessors_results(action, batches))</code></pre>
+</details>
+<div class="desc"><p>Execute the rollback for a given action.</p>
+<p>This method executes the rollback action associated with the given
+action descriptor.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>action</code></strong></dt>
+<dd>The action descriptor to rollback</dd>
+<dt><strong><code>batches</code></strong></dt>
+<dd>List of all batches in the workflow</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The result of the rollback operation</p></div>
+</dd>
+<dt id="src.utils.DagaFlowUtils.wrap_action"><code class="name flex">
+<span>async def <span class="ident">wrap_action</span></span>(<span>action: <a title="src.utils.ActionDescriptor" href="#src.utils.ActionDescriptor">ActionDescriptor</a>[typing.Any, typing.Any],<br>batches: list[<a title="src.utils.Batch" href="#src.utils.Batch">Batch</a>[typing.Any, typing.Any]]) ‑> <a title="src.utils.ActionDescriptor" href="#src.utils.ActionDescriptor">ActionDescriptor</a>[typing.Any, typing.Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+async def wrap_action(action: ActionDescriptor[Any, Any], batches: list[Batch[Any, Any]]) -&gt; ActionDescriptor[Any, Any]:
+    &#34;&#34;&#34;
+    Execute an action with proper timing and error handling.
+    
+    This method executes an action, records timing information, and
+    handles any exceptions that occur during execution.
+    
+    Args:
+        action: The action descriptor to execute
+        batches: List of all batches in the workflow
+    
+    Returns:
+        The action descriptor with updated result and timing information
+    
+    Raises:
+        Exception: Any exception that occurs during action execution
+    &#34;&#34;&#34;
+    action.time_started = time.time()
+    try:
+        predecessors_results = DagaFlowUtils.get_predecessors_results(action, batches)
+        action.result = await action.action(predecessors_results)
+        return action.result
+    except Exception as e:
+        action.error = e
+        raise e
+    finally:
+        action.time_ended = time.time()</code></pre>
+</details>
+<div class="desc"><p>Execute an action with proper timing and error handling.</p>
+<p>This method executes an action, records timing information, and
+handles any exceptions that occur during execution.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>action</code></strong></dt>
+<dd>The action descriptor to execute</dd>
+<dt><strong><code>batches</code></strong></dt>
+<dd>List of all batches in the workflow</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The action descriptor with updated result and timing information</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>Exception</code></dt>
+<dd>Any exception that occurs during action execution</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.utils.indexx" href="#src.utils.indexx">indexx</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.utils.ActionDescriptor" href="#src.utils.ActionDescriptor">ActionDescriptor</a></code></h4>
+<ul class="two-column">
+<li><code><a title="src.utils.ActionDescriptor.action" href="#src.utils.ActionDescriptor.action">action</a></code></li>
+<li><code><a title="src.utils.ActionDescriptor.batch_index" href="#src.utils.ActionDescriptor.batch_index">batch_index</a></code></li>
+<li><code><a title="src.utils.ActionDescriptor.error" href="#src.utils.ActionDescriptor.error">error</a></code></li>
+<li><code><a title="src.utils.ActionDescriptor.node_index" href="#src.utils.ActionDescriptor.node_index">node_index</a></code></li>
+<li><code><a title="src.utils.ActionDescriptor.predecessors" href="#src.utils.ActionDescriptor.predecessors">predecessors</a></code></li>
+<li><code><a title="src.utils.ActionDescriptor.result" href="#src.utils.ActionDescriptor.result">result</a></code></li>
+<li><code><a title="src.utils.ActionDescriptor.time_ended" href="#src.utils.ActionDescriptor.time_ended">time_ended</a></code></li>
+<li><code><a title="src.utils.ActionDescriptor.time_started" href="#src.utils.ActionDescriptor.time_started">time_started</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.utils.Batch" href="#src.utils.Batch">Batch</a></code></h4>
+<ul class="">
+<li><code><a title="src.utils.Batch.results" href="#src.utils.Batch.results">results</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.utils.DagaFlowUtils" href="#src.utils.DagaFlowUtils">DagaFlowUtils</a></code></h4>
+<ul class="">
+<li><code><a title="src.utils.DagaFlowUtils.get_flow_batches" href="#src.utils.DagaFlowUtils.get_flow_batches">get_flow_batches</a></code></li>
+<li><code><a title="src.utils.DagaFlowUtils.get_predecessors_results" href="#src.utils.DagaFlowUtils.get_predecessors_results">get_predecessors_results</a></code></li>
+<li><code><a title="src.utils.DagaFlowUtils.initialize_dag_as_flow" href="#src.utils.DagaFlowUtils.initialize_dag_as_flow">initialize_dag_as_flow</a></code></li>
+<li><code><a title="src.utils.DagaFlowUtils.rollback_action" href="#src.utils.DagaFlowUtils.rollback_action">rollback_action</a></code></li>
+<li><code><a title="src.utils.DagaFlowUtils.wrap_action" href="#src.utils.DagaFlowUtils.wrap_action">wrap_action</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
