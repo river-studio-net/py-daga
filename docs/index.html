@@ -41,9 +41,67 @@ el.replaceWith(d);
 with support for rollback mechanisms and error handling.</p>
 <h2 id="components">Components</h2>
 <ul>
-<li>DagaAction: Base class for defining workflow actions</li>
-<li>DagaFlow: Orchestrator for executing DAG-based workflows</li>
+<li><strong>DagaAction</strong>: Base class for defining workflow actions</li>
+<li><strong>DagaFlow</strong>: Orchestrator for executing DAG-based workflows</li>
 </ul>
+<h2 id="basic-usage-without-rollbacks">Basic Usage Without Rollbacks</h2>
+<pre><code class="language-python">import networkx as nx
+from py_daga import DagaFlow
+
+async def root(predecessors_results: list[int]):
+    return sum(predecessors_results) + 1
+async def layer1_f1(predecessors_results: list[int]): 
+    return sum(predecessors_results) + 2
+async def layer1_f2(predecessors_results: list[int]): 
+    return sum(predecessors_results) + 3
+async def layer2_f1(predecessors_results: list[int]): 
+    return sum(predecessors_results) + 4
+async def layer2_f2(predecessors_results: list[int]): 
+    return sum(predecessors_results) + 5
+
+dag = nx.DiGraph()
+dag.add_edges_from([
+    (root, layer1_f1),
+    (root, layer1_f2),
+    (layer1_f1, layer2_f1),
+    (layer1_f1, layer2_f2),
+    (layer1_f2, layer2_f2),
+])
+flow = DagaFlow(dag)
+results = flow.run(input=0)  # = [7, 12]
+</code></pre>
+<h2 id="basic-usage-with-rollbacks">Basic Usage With Rollbacks</h2>
+<p>To use rollback functionality, we need to wrap our functions as DagaActions:</p>
+<pre><code class="language-python">import networkx as nx
+from py_daga import DagaAction, DagaFlow
+
+@DagaAction[set[str], set[str]]
+async def root(predecessors_results: list[set[str]]):
+    # Your action implementation here
+    pass
+
+@root.register_function_as_rollback
+@DagaAction[set[str], set[str]]
+async def root_rollback(predecessors_results: list[set[str]]):
+    # Your rollback implementation here
+    pass
+
+@DagaAction[set[str], set[str]]
+async def layer1_f1(predecessors_results: list[set[str]]): 
+    # Your action implementation here
+    pass
+
+@layer1_f1.register_function_as_rollback
+@DagaAction[set[str], set[str]]
+async def layer1_f1_rollback(predecessors_results: list[set[str]]): 
+    # Your rollback implementation here
+    pass
+
+flow = DagaFlow(
+    nx.DiGraph().add_edges_from([(root, layer1_f1)])
+)
+results = flow.run()
+</code></pre>
 </section>
 <section>
 <h2 class="section-title" id="header-submodules">Sub-modules</h2>
@@ -511,7 +569,11 @@ that occurred during execution</dd>
 </article>
 <nav id="sidebar">
 <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#components">Components</a></li>
+<li><a href="#basic-usage-without-rollbacks">Basic Usage Without Rollbacks</a></li>
+<li><a href="#basic-usage-with-rollbacks">Basic Usage With Rollbacks</a></li>
+</ul>
 </div>
 <ul id="index">
 <li><h3><a href="#header-submodules">Sub-modules</a></h3>
