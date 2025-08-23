@@ -69,6 +69,7 @@ jobs:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
     permissions:
       id-token: write  # Required for Trusted Publishing
+      contents: write  # Required for pushing tags
     
     steps:
     - name: Checkout repository
@@ -90,6 +91,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        # Configure Git to use the token for authentication
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
     
     - name: Install dependencies
       run: uv sync --group dev
